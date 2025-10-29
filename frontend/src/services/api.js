@@ -28,3 +28,12 @@ export async function getUserActivity(userId) {
     throw error;
   }
 }
+
+export const getUserAverageSessions = async (userId) => {
+  const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
+  if (!response.ok) {
+    throw new Error("Erreur API - Sessions moyennes");
+  }
+  const data = await response.json();
+  return data.data;
+};

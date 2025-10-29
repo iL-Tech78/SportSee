@@ -1,37 +1,37 @@
 .sidebar {
-    position: fixed;
-    top: 91px; /* Mettre la valeur de la hauteur du header sous forme de variable aprés*/
-    left: 0;
-    width: 117px;
-    height: calc(100vh - 91px); /* Moins la hauteur du header sous forme de variable aprés*/
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 91px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
   
-  .sidebar__icons {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+.sidebar__icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
   
-  .sidebar__icons img {
-    width: 64px;
-    height: 64px;
-    background-color: white;
-    border-radius: 6px;
-    padding: 10px;
-    cursor: pointer;
-  }
+.sidebar__icons img {
+  width: 64px;
+  height: 64px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
   
-  .sidebar__copyright {
-    position: absolute;
-    bottom: 40px;
-    color: white;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 12px;
-  }
+.sidebar__copyright {
+  position: absolute;
+  bottom: 40px;
+  color: white;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 12px;
+}
   

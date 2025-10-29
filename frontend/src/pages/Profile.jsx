@@ -1,44 +1,40 @@
-import { useEffect, useState } from "react";
-import { getUserData } from "../services/api";
+import React from "react";
 import BarChartActivity from "../components/BarChartActivity";
+import LineChartAverageSessions from "../components/LineChartAverageSessions";
 import "../styles/Profile.css";
 
 function Profile() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const userData = await getUserData(12); // id 12 = Karl
-      setUser(userData);
-    }
-    fetchData();
-  }, []);
-
-  if (!user) return <p>Chargement...</p>;
+  const userId = 12;
 
   return (
     <main className="profile-page">
-      <section className="profile-header">
+      <div className="profile-header">
         <h1>
-          Bonjour <span className="user-name">{user.userInfos.firstName}</span>
+          Bonjour <span className="profile-name">Karl</span>
         </h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      </section>
+      </div>
 
-      <section className="profile-content">
-        <div className="charts">
-        <div className="barchart"><BarChartActivity userId={12} /></div>
-          <div className="linechart">LineChart durée moyenne des sessions</div>
-          <div className="radarchart">RadarChart types d’activité</div>
-          <div className="radialchart">RadialBarChart score moyen</div>
+      <section className="profile-dashboard">
+        
+        <div className="profile-dashboard-left">
+          <BarChartActivity userId={userId} />
+
+          <div className="profile-bottom-charts">
+            <LineChartAverageSessions userId={userId} />
+            
+            <div className="chart-placeholder">RadarChart types d’activité</div>
+            <div className="chart-placeholder">RadialBarChart score moyen</div>
+          </div>
         </div>
 
-        <aside className="key-data">
-          <div className="card">Calories</div>
-          <div className="card">Protéines</div>
-          <div className="card">Glucides</div>
-          <div className="card">Lipides</div>
-        </aside>
+        
+        <div className="profile-dashboard-right">
+          <div className="card-placeholder">Calories</div>
+          <div className="card-placeholder">Protéines</div>
+          <div className="card-placeholder">Glucides</div>
+          <div className="card-placeholder">Lipides</div>
+        </div>
       </section>
     </main>
   );

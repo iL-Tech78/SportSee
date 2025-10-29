@@ -1,0 +1,48 @@
+.linechart-container {
+    width: 100%;
+    height: 300px;
+    background: #ff0000;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+}
+  
+.linechart-title {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.linechart-tooltip {
+    background: #fff;
+    color: #000;
+    font-size: 10px;
+    padding: 5px 8px;
+    text-align: center;
+}
+  
+@media (max-width: 1024px) {
+    .linechart-container {
+      height: 250px;
+    }
+  
+    .linechart-title {
+      font-size: 13px;
+    }
+}
+  
+@media (max-width: 768px) {
+    .linechart-container {
+      height: 220px;
+      padding: 5px 10px;
+    }
+  
+    .linechart-title {
+      font-size: 12px;
+    }
+}
+  
