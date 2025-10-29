@@ -1,18 +1,81 @@
-.profile {
-    padding: 40px;
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 6rem;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
 }
   
-.profile h1 {
+.profile-header h1 {
     font-size: 48px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
   
-.profile p {
+.profile-header .user-name {
+    color: #e60000;
+}
+  
+.profile-header p {
     font-size: 18px;
-    color: #74798C;
+    color: #74798c;
+}
+  
+.profile-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+} 
+
+.charts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2rem;
+} 
+
+.barchart {
+    grid-column: 1 / 4;
+    height: 320px;
 }
 
-.profile h1 span {
-    color: red
+.charts > div {
+    background: #fbfbfb;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #9b9b9b;
+    height: 270px;
 }
+
+.key-data {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+  
+.key-data .card {
+    background: #fbfbfb;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 220px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}  
+
+@media screen and (max-width: 1024px) {
+    body {
+      overflow-x: auto;
+    }
+}
+  
