@@ -1,16 +1,10 @@
 import { Link, Outlet } from 'react-router-dom';
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <header>
-        <h1>SportSee</h1>
-        <nav>
-          <Link to="/">Accueil</Link> | <Link to="/profile">Profil</Link>
-        </nav>
-      </header>
-
-      {/* Contenu de la page (Home ou Profile) */}
+      <Header />
       <Outlet />
     </div>
   );
