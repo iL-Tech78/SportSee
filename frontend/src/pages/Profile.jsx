@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserData } from "../services/api";
+import BarChartActivity from "../components/BarChartActivity";
 import "../styles/Profile.css";
 
 function Profile() {
@@ -26,7 +27,7 @@ function Profile() {
 
       <section className="profile-content">
         <div className="charts">
-          <div className="barchart">BarChart activité quotidienne</div>
+        <div className="barchart"><BarChartActivity userId={12} /></div>
           <div className="linechart">LineChart durée moyenne des sessions</div>
           <div className="radarchart">RadarChart types d’activité</div>
           <div className="radialchart">RadialBarChart score moyen</div>

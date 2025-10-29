@@ -15,3 +15,16 @@ export async function getUserData(userId) { // ici userId vas être egale à 12 
     }
 }
   
+export async function getUserActivity(userId) {
+  try {
+    const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
+    if (!response.ok) {
+      throw new Error("Erreur de chargement de l'activité");
+    }
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
