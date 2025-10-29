@@ -1,8 +1,17 @@
+import { Link, Outlet } from 'react-router-dom';
+
 function App() {
   return (
     <div>
-      <h1>SportSee</h1>
-      <p>Je suis sur mon tableau de bord sportif du projet 12 SportSee</p>
+      <header>
+        <h1>SportSee</h1>
+        <nav>
+          <Link to="/">Accueil</Link> | <Link to="/profile">Profil</Link>
+        </nav>
+      </header>
+
+      {/* Contenu de la page (Home ou Profile) */}
+      <Outlet />
     </div>
   );
 }
