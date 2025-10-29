@@ -9,4 +9,16 @@ body {
     background-color: #fff;
     color: #000;
 }
+
+.layout {
+    display: flex;
+    flex-direction: column;
+}
+  
+.content {
+    display: flex;
+    margin-top: 90px;
+    margin-left: 100px;
+    padding: 20px;
+}
   

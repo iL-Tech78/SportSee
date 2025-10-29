@@ -1,0 +1,37 @@
+.sidebar {
+    position: fixed;
+    top: 91px; /* Mettre la valeur de la hauteur du header sous forme de variable aprés*/
+    left: 0;
+    width: 117px;
+    height: calc(100vh - 91px); /* Moins la hauteur du header sous forme de variable aprés*/
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sidebar__icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .sidebar__icons img {
+    width: 64px;
+    height: 64px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar__copyright {
+    position: absolute;
+    bottom: 40px;
+    color: white;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 12px;
+  }
+  
