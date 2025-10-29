@@ -1,0 +1,18 @@
+.profile {
+    padding: 40px;
+}
+  
+.profile h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+  
+.profile p {
+    font-size: 18px;
+    color: #74798C;
+}
+
+.profile h1 span {
+    color: red
+}
