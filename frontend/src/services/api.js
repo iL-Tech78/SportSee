@@ -37,3 +37,31 @@ export const getUserAverageSessions = async (userId) => {
   const data = await response.json();
   return data.data;
 };
+
+export async function getUserPerformance(id) {
+  try {
+    const response = await fetch(`http://localhost:3000/user/${id}/performance`);
+    if (!response.ok) throw new Error('Erreur lors de la récupération des performances');
+    const data = await response.json();
+
+    // Formatage des données
+    const kindLabels = {
+      cardio: 'Cardio',
+      energy: 'Énergie',
+      endurance: 'Endurance',
+      strength: 'Force',
+      speed: 'Vitesse',
+      intensity: 'Intensité'
+    };
+
+    const formattedData = data.data.data.map(item => ({
+      subject: kindLabels[data.data.kind[item.kind]],
+      value: item.value
+    }));
+
+    return formattedData;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}

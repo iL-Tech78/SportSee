@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BarChartActivity from "../components/BarChartActivity";
 import LineChartAverageSessions from "../components/LineChartAverageSessions";
+import RadarChartPerformance from "../components/RadarChartPerformance";
+import { getUserPerformance } from "../services/api";
 import "../styles/Profile.css";
 
 function Profile() {
-  const userId = 12;
+  const userId = 12; // ID de l'utilisateur (Karl)
+  const [performanceData, setPerformanceData] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPerformance = async () => {
+      try {
+        const data = await getUserPerformance(userId);
+        setPerformanceData(data);
+      } catch (err) {
+        console.error("Erreur de récupération des performances :", err);
+        setError("Impossible de charger les données de performance.");
+      }
+    };
+
+    fetchPerformance();
+  }, [userId]);
 
   return (
     <main className="profile-page">
@@ -22,8 +40,14 @@ function Profile() {
 
           <div className="profile-bottom-charts">
             <LineChartAverageSessions userId={userId} />
+
             
-            <div className="chart-placeholder">RadarChart types d’activité</div>
+            {error ? (
+              <div className="chart-placeholder">{error}</div>
+            ) : (
+              <RadarChartPerformance data={performanceData} />
+            )}
+
             <div className="chart-placeholder">RadialBarChart score moyen</div>
           </div>
         </div>
