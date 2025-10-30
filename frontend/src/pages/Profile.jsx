@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BarChartActivity from "../components/BarChartActivity";
 import LineChartAverageSessions from "../components/LineChartAverageSessions";
 import RadarChartPerformance from "../components/RadarChartPerformance";
+import RadialBarChartScore from "../components/RadialBarChartScore";
 import { getUserPerformance } from "../services/api";
 import "../styles/Profile.css";
 
@@ -48,7 +49,10 @@ function Profile() {
               <RadarChartPerformance data={performanceData} />
             )}
 
-            <div className="chart-placeholder">RadialBarChart score moyen</div>
+            <div className="chart-placeholder">
+              <RadialBarChartScore userId={userId} />
+            </div>
+
           </div>
         </div>
 

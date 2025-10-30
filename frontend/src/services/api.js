@@ -65,3 +65,15 @@ export async function getUserPerformance(id) {
     return null;
   }
 }
+
+export async function getUserMainData(userId) {
+  try {
+    const response = await fetch(`http://localhost:3000/user/${userId}`);
+    if (!response.ok) throw new Error('Erreur réseau');
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Erreur lors du fetch user data:', error);
+    return null;
+  }
+}
