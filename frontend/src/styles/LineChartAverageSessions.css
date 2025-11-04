@@ -1,48 +1,74 @@
 .linechart-container {
-    width: 100%;
-    height: 300px;
-    background: #ff0000;
-    border-radius: 5px;
-    padding: 10px 20px;
-    position: relative;
-    overflow: hidden;
-}
-  
-.linechart-title {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 15px;
-    font-weight: 500;
+  width: 100%;
+  height: 263px;
+  background: var(--primary-red);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
+.linechart-title {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  font-weight: 500;
+  max-width: 150px;
+  line-height: 1.4;
+}
+
+/* --- Custom Tooltip --- */
 .linechart-tooltip {
-    background: #fff;
-    color: #000;
-    font-size: 10px;
-    padding: 5px 8px;
-    text-align: center;
+  background: #fff;
+  color: var(--dark-blue);
+  font-size: 10px;
+  padding: 7px 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-  
+
+.linechart-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.linechart-container:hover .linechart-hover {
+  opacity: 1;
+}
+
+/* === RESPONSIVE === */
+
 @media (max-width: 1024px) {
-    .linechart-container {
-      height: 250px;
-    }
-  
-    .linechart-title {
-      font-size: 13px;
-    }
+  .linechart-container {
+    height: 240px;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .linechart-title {
+    font-size: 14px;
+  }
 }
-  
+
 @media (max-width: 768px) {
-    .linechart-container {
-      height: 220px;
-      padding: 5px 10px;
-    }
-  
-    .linechart-title {
-      font-size: 12px;
-    }
+  .linechart-container {
+    height: 220px;
+    padding: 1rem 1.2rem;
+  }
+
+  .linechart-title {
+    font-size: 13px;
+  }
 }
-  

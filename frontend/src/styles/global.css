@@ -1,11 +1,34 @@
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-  
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fff;
-    color: #000;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background-color: #fff; /* Légèrement grisé comme sur la maquette */
+  color: #20253a;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+:root {
+  --primary-red: #FF0000;
+  --dark-blue: #20253A;
+  --text-gray: #74798C;
+  --text-black: #000;
+  --background-light: #fbfbfb;
+  --background-white: #fff;
+  --radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-blue);
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

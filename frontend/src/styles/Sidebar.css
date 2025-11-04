@@ -35,3 +35,11 @@
   font-size: 12px;
 }
   
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .sidebar__icons img {
+    width: 54px;
+    height: 54px;
+  }
+}

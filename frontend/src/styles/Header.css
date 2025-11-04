@@ -25,7 +25,7 @@
 .header__nav a {
     color: white;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
 }
   
@@ -33,3 +33,24 @@
     text-decoration: underline;
 }
   
+/* === RESPONSIVE === */
+
+@media (max-width: 1024px) {
+    .header__nav {
+        gap: 50px;
+    }
+      
+}
+
+    @media (max-width: 768px) {
+    .header__nav {
+        gap: 20px;
+    }
+    .header__nav a {
+        font-size: 14px;
+    }
+    .header__logo img {
+        height: 35px;
+    }
+
+}  

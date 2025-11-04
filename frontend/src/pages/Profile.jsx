@@ -3,6 +3,11 @@ import BarChartActivity from "../components/BarChartActivity";
 import LineChartAverageSessions from "../components/LineChartAverageSessions";
 import RadarChartPerformance from "../components/RadarChartPerformance";
 import RadialBarChartScore from "../components/RadialBarChartScore";
+import NutrientCard from "../components/NutrientCard";
+import iconCalories from "../assets/icon-calories.svg";
+import iconProteines from "../assets/icon-proteines.svg";
+import iconGlucides from "../assets/icon-glucides.svg";
+import iconLipides from "../assets/icon-lipides.svg";
 import { getUserPerformance } from "../services/api";
 import "../styles/Profile.css";
 
@@ -26,7 +31,7 @@ function Profile() {
   }, [userId]);
 
   return (
-    <main className="profile-page">
+    <div className="container">
       <div className="profile-header">
         <h1>
           Bonjour <span className="profile-name">Karl</span>
@@ -56,15 +61,38 @@ function Profile() {
           </div>
         </div>
 
-        
         <div className="profile-dashboard-right">
-          <div className="card-placeholder">Calories</div>
-          <div className="card-placeholder">Protéines</div>
-          <div className="card-placeholder">Glucides</div>
-          <div className="card-placeholder">Lipides</div>
+          <NutrientCard
+            icon={iconCalories}
+            value={1930}
+            unit="kCal"
+            label="Calories"
+            color="rgba(255, 0, 0, 0.1)"
+          />
+          <NutrientCard
+            icon={iconProteines}
+            value={155}
+            unit="g"
+            label="Protéines"
+            color="rgba(74, 184, 255, 0.1)"
+          />
+          <NutrientCard
+            icon={iconGlucides}
+            value={290}
+            unit="g"
+            label="Glucides"
+            color="rgba(249, 206, 35, 0.1)"
+          />
+          <NutrientCard
+            icon={iconLipides}
+            value={50}
+            unit="g"
+            label="Lipides"
+            color="rgba(253, 81, 129, 0.1)"
+          />
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 
