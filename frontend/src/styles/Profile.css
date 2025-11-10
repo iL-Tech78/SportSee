@@ -2,6 +2,7 @@
 .container-switcher {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   width: 100%;
 }
@@ -91,7 +92,6 @@
     align-items: center;
     padding-left: 2rem;
     padding-right: 2rem;
-    width: 700px;
   }
 
   .charts-container {
@@ -119,6 +119,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .container-switcher { 
+    flex-direction: column;
+  }
   .profile-wrapper {
     padding: 20px 10px;
   }
