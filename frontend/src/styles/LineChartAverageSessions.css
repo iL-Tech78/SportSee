@@ -1,74 +1,40 @@
 .linechart-container {
-  width: 100%;
-  height: 263px;
-  background: var(--primary-red);
+  background-color: #ff0000;
   border-radius: 10px;
-  padding: 1.5rem 2rem;
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
 }
 
 .linechart-title {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
-  max-width: 150px;
-  line-height: 1.4;
-}
-
-/* --- Custom Tooltip --- */
-.linechart-tooltip {
-  background: #fff;
-  color: var(--dark-blue);
-  font-size: 10px;
-  padding: 7px 10px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.linechart-hover {
+  font-size: 15px;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  top: 15px;
+  left: 30px;
+  z-index: 10;
 }
 
-.linechart-container:hover .linechart-hover {
-  opacity: 1;
+.linechart-tooltip {
+  background: #ffffff;
+  color: #000;
+  font-weight: 600;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  transform: translateY(-10px);
 }
 
-/* === RESPONSIVE === */
-
-@media (max-width: 1024px) {
-  .linechart-container {
-    height: 240px;
-    padding: 1.2rem 1.5rem;
-  }
-
-  .linechart-title {
-    font-size: 14px;
-  }
+.overlay {
+  transition: all 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  .linechart-container {
-    height: 220px;
-    padding: 1rem 1.2rem;
-  }
-
-  .linechart-title {
-    font-size: 13px;
-  }
+.chart-error,
+.chart-loading {
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
 }

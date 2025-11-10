@@ -1,126 +1,184 @@
 
-.container {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 10rem 3rem 0rem 9rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: var(----background-white);
+.container-switcher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.profile-wrapper {
+  max-width: 1440px; 
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  overflow-x: hidden;
 }
 
-.profile-page {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 40px 60px;
-    font-family: var(--font-family);
-    min-height: 100vh;
-    box-sizing: border-box;
-    margin-top: 100px;
-    margin-left: 90px; 
+.profile-container {
+  padding-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: calc(100% - 120px);
+  padding: 10rem 2rem 0 2rem;
+  margin-left: 120px;
+}
+
+.profile-header {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .profile-header h1 {
-    font-size: 48px;
-    font-weight: 500;
-    color: var(----text-black);
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .profile-name {
-    color: var(--primary-red);
+  color: #ff0101;
 }
 
 .profile-header p {
-    font-size: 18px;
-    color: var(----text-black);
-    margin-top: 10px;
+  font-size: 18px;
+  color: #333;
 }
 
-.profile-dashboard {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 30px;
-    margin-top: 30px;
-    width: 100%;
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 30px;
+  width: 70%;
 }
 
-.profile-dashboard-left {
-    display: flex;
+.chart-item.large {
+  grid-column: 1 / 4;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.chart-item.small {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  padding: 20px;
+  height: 260px;
+}
+
+.nutrients-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+  min-width: 250px;
+  gap: 20px;
+}
+
+.loading,
+.error {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1024px) {
+  .container-switcher { 
+    padding: 0;
+  }
+  .profile-container {
     flex-direction: column;
-    gap: 30px;
-}
-
-.profile-bottom-charts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.profile-dashboard-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-.chart-placeholder,
-.card-placeholder {
-    background-color: #fbfbfb;
-    border-radius: 5px;
-    color: #9b9eac;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 700px;
+  }
+
+  .charts-container {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+
+  .chart-item.large {
+    grid-column: 1;
+  }
+
+  .nutrients-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nutrient-card {
+    width: 45%;
+    margin-bottom: 15px;
+  }
 }
 
-.chart-placeholder {
-    height: 260px;
+@media screen and (max-width: 768px) {
+  .profile-wrapper {
+    padding: 20px 10px;
+  }
+
+  .profile-header h1 {
+    font-size: 32px;
+  }
+
+  .charts-container {
+    gap: 20px;
+  }
+
+  .chart-item.small {
+    height: 220px;
+  }
+
+  .nutrient-card {
+    width: 100%;
+  }
 }
 
-.card-placeholder {
-    height: 120px;
+.mode-banner {
+  text-align: center;
+  font-weight: 600;
+  padding: 8px 0;
+  font-size: 14px;
+  color: white;
 }
 
-@media (max-width: 1200px) {
-    .profile-page {
-        padding: 30px 40px;
-    }
-
-    .profile-dashboard {
-        grid-template-columns: 1fr;
-    }
-
-    .profile-dashboard-right {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .profile-dashboard-right .card-placeholder {
-        flex: 1;
-    }
-
-    .profile-bottom-charts {
-        grid-template-columns: 1fr 1fr;
-    }
+.mode-banner.mock {
+  background-color: #ff0101;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-@media (max-width: 1025px) {
-    .profile-page {
-        padding: 20px;
-    }
+.mode-banner.api {
+  background-color: #2ecc71;
+}
 
-    .profile-header h1 {
-        font-size: 28px;
-    }
+.user-switch {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 15px 0;
+}
 
-    .profile-bottom-charts {
-        grid-template-columns: 1fr;
-    }
+.user-btn {
+  background-color: #ff0101;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    .profile-dashboard-right {
-        flex-direction: column;
-    }
+.user-btn:hover {
+  background-color: #e60000;
 }

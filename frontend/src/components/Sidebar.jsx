@@ -13,7 +13,7 @@ function Sidebar() {
         <img src={bikeIcon} alt="Vélo" />
         <img src={weightIcon} alt="Musculation" />
       </nav>
-      <p className="sidebar__copyright">Copiryght, SportSee 2020</p>
+      <p className="sidebar__copyright">Copyright, SportSee 2020</p>
     </aside>
   );
 }

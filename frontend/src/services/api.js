@@ -1,117 +1,117 @@
-/**
- * @description Je récupère les données principales d’un utilisateur
- * @param {number} userId - L'identifiant de l'utilisateur
- * @returns {Promise<object>} - Les données principales de l'utilisateur
- */
-export async function getUserData(userId) {
-  try {
-    const response = await fetch(`http://localhost:3000/user/${userId}`); // Je récup les données utilisateur depuis l’API (http://localhost:3000),
-    if (!response.ok) throw new Error("Erreur réseau");
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    console.error("Erreur lors du fetch user data:", error);
-    return null;
-  }
-}
+import UserMainData from "../models/UserMainData";
+import UserActivity from "../models/UserActivity";
+import UserAverageSessions from "../models/UserAverageSessions";
+import UserPerformance from "../models/UserPerformance";
+import { mockData } from "../data/mockData";
 
 /**
- * @description Je récupère les données d'activité quotidienne
- * @param {number} userId - Identifiant de l'utilisateur
- * @returns {Promise<object>} - Données d'activité
+Modifications importante suite au retour de l'examinateur : 
+ * Création des classes de modélisation (UserMainData, UserActivity, etc.) pour uniformiser mes objets et sécuriser mes composants.
+
+Ajout de la possibilité de basculer entre :
+ * les données réelles de l’API (USE_MOCK = false)
+ * les données mockées du fichier mockData.js (USE_MOCK = true)
+
+l'objectif : l'idée ici est de permettre à l’application de fonctionner quelle que soit la source de données (API ou mock), avec une structure de données cohérente et fiable.
+ 
+*/
+
+
+/**
+ * C'est ici qu'on peut maintenant donc Activer ou désactiver les données mockées
+ * true  → les données viennent du fichier mock
+ * false → les données viennent de l’API réelle
  */
-export async function getUserActivity(userId) {
+
+// const USE_MOCK = false;
+const USE_MOCK = true;
+const BASE_URL = "http://localhost:3000/user";
+
+/* ---------------------------------------
+  1. Données principales utilisateur
+----------------------------------------- */
+export async function getUserMainData(userId) {
   try {
-    const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
-    if (!response.ok) {
-      throw new Error("Erreur de chargement de l'activité");
+    if (USE_MOCK) {
+      const data = mockData.USER_MAIN_DATA.find((item) => item.id === userId);
+      return new UserMainData(data);
     }
+
+    const response = await fetch(`${BASE_URL}/${userId}`);
+    if (!response.ok) throw new Error("Erreur API principale");
     const data = await response.json();
-    return data.data;
+    return new UserMainData(data.data);
   } catch (error) {
-    console.error(error);
+    console.error("Erreur dans getUserMainData:", error);
     throw error;
   }
 }
 
-/**
- * @description Je récupère les sessions moyennes
- * @param {number} userId - Identifiant de l'utilisateur
- * @returns {Promise<object>} - Données de sessions
- */
-export const getUserAverageSessions = async (userId) => {
-  const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
-  if (!response.ok) {
-    throw new Error("Erreur API - Sessions moyennes");
-  }
-  const data = await response.json();
-  return data.data;
-};
-
-/**
- * @description Je récupère les performances utilisateur
- * @param {number} id - Identifiant de l'utilisateur
- * @returns {Promise<object>} - Données de performance formatées
- */
-export async function getUserPerformance(id) {
+/* ---------------------------------------
+  2. Activité quotidienne (composant bar chart)
+----------------------------------------- */
+export async function getUserActivity(userId) {
   try {
-    const response = await fetch(`http://localhost:3000/user/${id}/performance`);
-    if (!response.ok) throw new Error("Erreur lors de la récupération des performances");
+    if (USE_MOCK) {
+      const data = mockData.USER_ACTIVITY.find(
+        (item) => item.userId === userId
+      );
+      return new UserActivity(data);
+    }
+
+    const response = await fetch(`${BASE_URL}/${userId}/activity`);
+    if (!response.ok) throw new Error("Erreur API activité");
     const data = await response.json();
-
-    const kindLabels = {
-      cardio: "Cardio",
-      energy: "Énergie",
-      endurance: "Endurance",
-      strength: "Force",
-      speed: "Vitesse",
-      intensity: "Intensité",
-    };
-
-    const formattedData = data.data.data.map((item) => ({
-      subject: kindLabels[data.data.kind[item.kind]],
-      value: item.value,
-    }));
-
-    return formattedData;
+    return new UserActivity(data.data);
   } catch (error) {
-    console.error(error);
-    return null;
+    console.error("Erreur dans getUserActivity:", error);
+    throw error;
   }
 }
 
-/**
- * @description Je récupère les données nutritionnelles (keyData)
- * @param {number} userId - Identifiant de l'utilisateur
- * @returns {Promise<object>} - Calories, protéines, glucides, lipides
- */
-export async function getUserMainData(userId) {
+/* ---------------------------------------
+   3️. Durée moyenne des sessions (conpoosant line chart)
+----------------------------------------- */
+export async function getUserAverageSessions(userId) {
   try {
-    const response = await fetch(`http://localhost:3000/user/${userId}`);
-    if (!response.ok) throw new Error("Erreur réseau");
+    if (USE_MOCK) {
+      const data = mockData.USER_AVERAGE_SESSIONS.find(
+        (item) => item.userId === userId
+      );
+      return new UserAverageSessions(data);
+    }
+
+    const response = await fetch(`${BASE_URL}/${userId}/average-sessions`);
+    if (!response.ok) throw new Error("Erreur API sessions moyennes");
     const data = await response.json();
-    return data.data.keyData; // Je renvoie uniquement les données nutritionnelles
+    return new UserAverageSessions(data.data);
   } catch (error) {
-    console.error("Erreur lors du fetch user keyData:", error);
-    return null;
+    console.error("Erreur dans getUserAverageSessions:", error);
+    throw error;
   }
 }
 
-/**
- * @description J récupère le score global de l'utilisateur
- * @param {number} userId - Identifiant de l'utilisateur
- * @returns {Promise<number>} - Score utilisateur (entre 0 et 1)
- */
-export async function getUserScore(userId) {
+/* ---------------------------------------
+   4️. Performance utilisateur (composant radar chart)
+----------------------------------------- */
+export async function getUserPerformance(userId) {
   try {
-    const response = await fetch(`http://localhost:3000/user/${userId}`);
-    if (!response.ok) throw new Error("Erreur lors du chargement du score utilisateur");
-    const data = await response.json();
+    if (USE_MOCK) {
+      const data = mockData.USER_PERFORMANCE.find(
+        (item) => item.userId === userId
+      );
+      return new UserPerformance(data);
+    }
 
-    // Iici car certains utilisateurs ont "todayScore", d'autres "score"
-    return data.data.todayScore ?? data.data.score;
+    const response = await fetch(`${BASE_URL}/${userId}/performance`);
+    if (!response.ok) throw new Error("Erreur API performance");
+    const data = await response.json();
+    return new UserPerformance(data.data);
   } catch (error) {
-    console.error("Erreur lors du fetch du score:", error);
-    return 0;
+    console.error("Erreur dans getUserPerformance:", error);
+    throw error;
   }
 }
+
+// J'export le mode utilisé pour que je puisse l'affichage dans le front
+export const IS_USING_MOCK = USE_MOCK;

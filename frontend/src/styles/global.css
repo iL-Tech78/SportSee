@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Roboto', 'Arial', sans-serif;
-  background-color: #fff; /* Légèrement grisé comme sur la maquette */
+  background-color: #fff;
   color: #20253a;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

@@ -1,106 +1,76 @@
 
 .barchart-container {
+  background-color: #fbfbfb;
+  border-radius: 5px;
   width: 100%;
   height: 320px;
-  background-color: var(--background-light);
-  border-radius: var(--radius);
-  padding: 2rem 2.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 
 .barchart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding: 0 2rem;
 }
 
-.barchart-title {
+.barchart-header h2 {
   font-size: 15px;
-  color: var(--dark-blue);
-  font-weight: 600;
+  color: #20253a;
+  margin: 0;
 }
 
 .barchart-legend {
   display: flex;
-  gap: 25px;
-  align-items: center;
+  gap: 20px;
 }
 
-.barchart-legend-item {
+.legend-item {
+  color: #74798c;
+  font-size: 14px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--text-gray);
-  font-weight: 600;
+  gap: 6px;
 }
 
-.legend-dot-black,
-.legend-dot-red {
+.legend-item::before {
+  content: "";
+  display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
 
-.legend-dot-black {
-  background-color: var(--dark-blue);
+.black-dot::before {
+  background-color: #282d30;
 }
 
-.legend-dot-red {
-  background-color: #E60000;
-}
-
-/* --- Custom Tooltip --- */
-.custom-tooltip {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.red-dot::before {
   background-color: #e60000;
-  color: #ffffff;
-  font-weight: 600;
-  padding: 1.5rem 0.5rem;
+}
+
+.barchart-tooltip {
+  background-color: #e60000;
+  color: white;
+  padding: 8px 10px;
   font-size: 12px;
+  line-height: 1.5;
+  border: none;
   text-align: center;
 }
 
-
-/* === RESPONSIVE === */
+.chart-loading,
+.chart-error {
+  text-align: center;
+  color: #9b9eac;
+  font-size: 14px;
+  margin-top: 20px;
+}
 
 @media (max-width: 1024px) {
-  .barchart-container {
-    height: 260px;
-    padding: 1.5rem 1rem;
-  }
-
-  .barchart-title {
-    font-size: 14px;
-  }
-
-  .barchart-legend-item {
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 768px) {
-  .barchart-container {
-    height: 220px;
-    padding: 1rem 0.5rem;
-  }
-
-  .barchart-legend {
-    gap: 12px;
-  }
-
-  .barchart-title {
-    font-size: 13px;
-  }
-
-  .barchart-legend-item {
-    font-size: 11px;
-  }
 }
